@@ -1,0 +1,22 @@
+<table class="msgTable" style="width:80%;">
+	<tbody>
+		
+		<tr style="vertical-align:top">
+			<% posts.each_with_index do |post,ind|  %>
+			<td class="msgBody" style="width:25%;">
+				<%= dates[ind] %>(<%= post.size %>)<br/>
+				<% post.group_by{|h| h[:addedby]}.sort_by{|k,v| -v.size}.take(80).each do |k,v| %>
+				<% uid = v.first[:addeduid] %>
+				<% q = quotes[ind][uid]  %>
+				<a href="/stat/user_posts/<%= uid%>/<%= dates[ind]%>"><%= k %></a>
+				
+				<%= "(#{v.size}/#{q})" %>
+				
+				<br />
+				<% end %>
+			</td>
+			<% end %>
+			
+		</tr>
+	</tbody>
+</table>

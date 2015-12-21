@@ -1,0 +1,5 @@
+#!/bin/bash
+
+"$(date)" >> /home/ptbot/ptbot-cron.txt
+cd '/home/ptbot'
+ruby run.rb 

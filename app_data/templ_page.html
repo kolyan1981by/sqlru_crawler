@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" SYSTEM "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="ru" xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru">
+<head>
+    <title>@@@PageTitle</title>
+  
+    <script type="text/javascript" src="css/helper.js"></script>
+	<script type="text/javascript" src="css/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/layout.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="css/actualforum2.css" media="screen" />
+</head>
+<body>
+<script>
+
+$(function(){
+
+	$(".addedby").click(function (event) {
+		event.preventDefault();
+		//var filter = $( "input:text[name='name1']" ).val();
+		var filter = $(this).text();
+		$(".msgTable").each(function () {
+			var name = $(this).find("tr:eq(1) td:eq(0) a").text();
+
+			if (name.trim() !== filter.trim()) $(this).hide();
+		});
+	});
+	
+	$(".addedbyname").click(function () {
+    		$(this).next().next().toggle();
+    }); 
+
+});
+
+</script>
+
+    <div id="page-container">
+        <div id="content-wrapper-forum">
+            @@@posts
+        </div>
+    </div>
+</body>
+</html>
